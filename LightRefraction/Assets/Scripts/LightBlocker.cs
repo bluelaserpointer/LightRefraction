@@ -11,14 +11,14 @@ namespace Gameplay
         public bool doBlock = true;
         public bool doReflection = false;
 
-        public UnityEvent<Vector2, Vector2> OnLighten;
+        public UnityEvent<Vector2, Vector2, float> OnLighten;
 
         IzumiLib.Timestamp lightenTimestamp = new IzumiLib.Timestamp();
         public float PassedTimeFromLastLighten => lightenTimestamp.PassedTime;
         public bool IsLighten => PassedTimeFromLastLighten <= 0.01;
-        public void Lighten(Vector2 position, Vector2 direction)
+        public void Lighten(Vector2 position, Vector2 direction, float remainDistance)
         {
-            OnLighten.Invoke(position, direction);
+            OnLighten.Invoke(position, direction, remainDistance);
             lightenTimestamp.Stamp();
         }
     }

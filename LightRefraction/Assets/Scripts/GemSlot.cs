@@ -34,15 +34,16 @@ namespace Gameplay
         {
             LightBlocker.doBlock = HoldingGem != null;
         }
-        private void OnLighten(Vector2 point, Vector2 direction)
+        private void OnLighten(Vector2 point, Vector2 direction, float remainDistance)
         {
             if (HoldingGem == null)
                 return;
             foreach(float fractionAngle in HoldingGem.DegreeAngles)
             {
-                float cos = Mathf.Cos(fractionAngle), sin = Mathf.Sin(fractionAngle);
+                float fractionRadian = fractionAngle * Mathf.Deg2Rad;
+                float cos = Mathf.Cos(fractionRadian), sin = Mathf.Sin(fractionRadian);
                 Vector2 fractionDirection = new Vector2(direction.x * cos + direction.y * sin, -direction.x * sin + direction.y * cos);
-                GameManager.Instance.EmitLightLine(point, fractionDirection, LightBlocker);
+                GameManager.Instance.EmitLightLine(point, fractionDirection, LightBlocker, remainDistance);
             }
         }
     }

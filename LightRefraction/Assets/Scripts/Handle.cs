@@ -9,7 +9,7 @@ namespace Gameplay
     public class Handle : MonoBehaviour
     {
         [SerializeField]
-        List<HandleGear> gears;
+        List<HandleGear> gears = new List<HandleGear>();
 
         [Header("Animation")]
         [SerializeField]

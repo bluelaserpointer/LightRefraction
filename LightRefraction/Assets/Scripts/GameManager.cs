@@ -48,7 +48,7 @@ namespace Gameplay
                 return;
             Vector2 end = Vector2.zero;
             bool foundEnd = false;
-            foreach (RaycastHit2D hitInfo in Physics2D.RaycastAll(origin, direction, distance))
+            foreach(RaycastHit2D hitInfo in Physics2D.RaycastAll(origin, direction, distance))
             {
                 LightBlocker lightBlocker = hitInfo.collider.gameObject.GetComponent<LightBlocker>();
                 if (lightBlocker != null && !lightBlocker.Equals(ignoreBlocker))
@@ -56,12 +56,13 @@ namespace Gameplay
                     if (lightBlocker.doBlock)
                     {
                         end = hitInfo.point;
+                        float remainDistance = distance - hitInfo.distance;
                         if (lightBlocker.doReflection)
                         {
-                            EmitLightLine(end, Vector2.Reflect(direction, hitInfo.normal), lightBlocker, distance - hitInfo.distance);
+                            EmitLightLine(end, Vector2.Reflect(direction, hitInfo.normal), lightBlocker, remainDistance);
                         }
                         foundEnd = true;
-                        lightBlocker.Lighten(end, direction);
+                        lightBlocker.Lighten(end, direction, remainDistance);
                         break;
                     }
                 }
