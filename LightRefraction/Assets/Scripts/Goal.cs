@@ -8,9 +8,9 @@ namespace Gameplay
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class Goal : MonoBehaviour
     {
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(other.attachedRigidbody == GameManager.Player.Rigidbody)
+            if(collision.attachedRigidbody == GameManager.Player.Rigidbody)
             {
                 GameManager.Instance.NextStage();
             }
