@@ -24,23 +24,37 @@ namespace Gameplay
         }
 
         //data
-        Vector3 _input;
+        public Vector3 input;
         [HideInInspector]
-        public bool doMove;
+        public bool preventMove;
+        public Interactable interactingObj;
         void Update()
         {
-            //movement
-            _input.x = Input.GetAxis("Horizontal");
-            _input.y = Input.GetAxis("Vertical");
+            //movement / handle input
+            input.x = Input.GetAxis("Horizontal");
+            input.y = Input.GetAxis("Vertical");
             //interact
             if(Input.GetKeyDown(KeyCode.Z))
             {
-                interactionArea.Interactable?.OnInteract.Invoke();
+                print("Z");
+                if(interactingObj != null && interactionArea.InArea(interactingObj))
+                {
+                    print("interact old");
+                    interactingObj.Interact();
+                }
+                else if(interactionArea.Interactable != null)
+                {
+                    (interactingObj = interactionArea.Interactable).Interact();
+                    print("interact new: " + interactingObj);
+                }
             }
         }
         private void FixedUpdate()
         {
-            transform.Translate(_input * moveSpeed * Time.deltaTime);
+            if (!preventMove)
+            {
+                transform.Translate(input * moveSpeed * Time.deltaTime);
+            }
         }
     }
 

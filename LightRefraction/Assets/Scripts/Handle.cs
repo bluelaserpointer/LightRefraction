@@ -8,20 +8,51 @@ namespace Gameplay
     [RequireComponent(typeof(Interactable))]
     public class Handle : MonoBehaviour
     {
-        Interactable interactable;
+        [SerializeField]
+        List<HandleGear> gears;
+
+        [Header("Animation")]
+        [SerializeField]
+        float rotateSpeed = 5F;
+
+        public bool BeingInteracted { get; private set; }
+        Interactable _interactable;
+        float _input;
         void Awake()
         {
-            interactable = GetComponent<Interactable>();
-            interactable.OnInteract.AddListener(OnInteract);
+            _interactable = GetComponent<Interactable>();
+            _interactable.OnInteract.AddListener(OnInteract);
         }
         private void OnInteract()
         {
-
+            if(BeingInteracted)
+            {
+                BeingInteracted = false;
+                GameManager.Player.preventMove = false;
+                gears.ForEach(gear => gear.SetHandleAmount(0));
+            }
+            else
+            {
+                BeingInteracted = true;
+                GameManager.Player.preventMove = true;
+            }
         }
         void Update()
         {
-
+            if (!BeingInteracted)
+                return;
+            _input = GameManager.Player.input.x;
+            gears.ForEach(gear => gear.SetHandleAmount(_input));
+        }
+        private void FixedUpdate()
+        {
+            if(_input != 0)
+                transform.eulerAngles += _input * Vector3.forward * rotateSpeed * Time.fixedDeltaTime;
+        }
+        private void OnDrawGizmos()
+        {
+            foreach (var gear in gears)
+                Gizmos.DrawLine(transform.position, gear.transform.position);
         }
     }
-
 }

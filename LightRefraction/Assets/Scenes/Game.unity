@@ -135,8 +135,9 @@ GameObject:
   - component: {fileID: 219992741}
   - component: {fileID: 219992742}
   - component: {fileID: 219992743}
+  - component: {fileID: 219992744}
   m_Layer: 0
-  m_Name: InteractionArea
+  m_Name: PlayerInteractionArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,12 +150,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219992739}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 659855317}
-  m_RootOrder: 3
+  m_Father: {fileID: 364188742}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &219992741
 MonoBehaviour:
@@ -176,7 +177,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219992739}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -205,6 +206,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!1818360608 &219992744
+PositionConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219992739}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 659855317}
+    weight: 1
 --- !u!1 &364188741
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 659855317}
+  - {fileID: 219992740}
   - {fileID: 963599436}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -434,7 +455,6 @@ Transform:
   - {fileID: 519420032}
   - {fileID: 525478332}
   - {fileID: 2145277498}
-  - {fileID: 219992740}
   m_Father: {fileID: 364188742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -452,6 +472,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   interactionArea: {fileID: 219992741}
+  input: {x: 0, y: 0, z: 0}
+  preventMove: 0
+  interactingObj: {fileID: 0}
 --- !u!50 &659855319
 Rigidbody2D:
   serializedVersion: 4
@@ -567,7 +590,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 364188742}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1555341739
 GameObject:

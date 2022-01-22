@@ -26,5 +26,9 @@ namespace Gameplay
                 interactables.Remove(interactable);
             }
         }
+        public bool InArea(Interactable interactable)
+        {
+            return interactables.Contains(interactable);
+        }
     }
 }
