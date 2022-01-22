@@ -99,7 +99,6 @@ namespace Gameplay {
 
         public void destory() {
             Destroy(this.gameObject);
-            print("被销毁了");
         }
 
         void checkCatchCharactor() {
