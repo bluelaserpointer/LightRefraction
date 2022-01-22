@@ -27,6 +27,7 @@ namespace Gameplay
         //data
         public static GameManager Instance { get; private set; }
         public Stage GeneratedStage { get; private set; }
+        public static Player Player => Instance.player;
         private void Awake()
         {
             Instance = this;
@@ -40,8 +41,40 @@ namespace Gameplay
             GeneratedStage = Instantiate(stage, worldTransform);
             player.transform.position = stage.startPosition.position;
         }
-        public void EmitLightLine(LightLine lightLine, Vector2 origin, Vector2 direction)
+        public void EmitLightLine(Vector2 origin, Vector2 direction, float distance = 100, Collider2D ignoreCollider = null)
         {
+            if (distance <= 0)
+                return;
+            Vector2 end = Vector2.zero;
+            bool foundEnd = false;
+            foreach (RaycastHit2D hitInfo in Physics2D.RaycastAll(origin, direction, distance))
+            {
+                if (hitInfo.collider.Equals(ignoreCollider))
+                    continue;
+                LightBlocker lightBlocker = hitInfo.collider.gameObject.GetComponent<LightBlocker>();
+                if (lightBlocker != null)
+                {
+                    if (lightBlocker.doBlock)
+                    {
+                        end = hitInfo.point;
+                        if (lightBlocker.doReflection)
+                        {
+                            EmitLightLine(end, Vector2.Reflect(direction, hitInfo.normal), distance - hitInfo.distance, hitInfo.collider);
+                        }
+                        foundEnd = true;
+                        lightBlocker.OnLighten.Invoke();
+                        break;
+                    }
+                }
+            }
+            if (!foundEnd)
+                end = origin + direction * distance;
+            LightLine lightLine = Instantiate(lightLinePrefab, lightLinesGroupTransform);
+            lightLine.Init(origin, end);
+        }
+        public void UpdateGemUI()
+        {
+            //TODO:
         }
     }
 }

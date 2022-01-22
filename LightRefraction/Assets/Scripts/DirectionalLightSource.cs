@@ -7,21 +7,9 @@ namespace Gameplay
     [DisallowMultipleComponent]
     public class DirectionalLightSource : MonoBehaviour
     {
-        [SerializeField]
-        [Min(0f)]
-        float raycastDistance = 100;
-
-        LightLine firstLightLine;
-        private void Start()
+        public void Update()
         {
-            UpdateLight();
-        }
-        public void UpdateLight()
-        {
-            //TODO: improve performance
-            //EmitDirectionalLight(transform.position, transform.right);
-            LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-            lineRenderer.enabled = false;
+            GameManager.Instance.EmitLightLine(transform.position, transform.right);
         }
     }
 }

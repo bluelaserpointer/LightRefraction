@@ -6,11 +6,8 @@ using UnityEngine.Events;
 namespace Gameplay
 {
     [DisallowMultipleComponent]
-    public class LightBlocker : MonoBehaviour
+    public class Interactable : MonoBehaviour
     {
-        public bool doBlock = true;
-        public bool doReflection = false;
-
-        public UnityEvent OnLighten;
+        public UnityEvent OnInteract;
     }
 }
