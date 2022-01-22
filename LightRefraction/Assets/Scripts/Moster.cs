@@ -12,6 +12,8 @@ namespace Gameplay {
         float angryMoveSpeed = 10F;
         [SerializeField, Label("触发追击距离")]
         float viewDistance = 3F;
+        [SerializeField, Label("怪物伤害范围")]
+        float catchDistance = 1.5F;
 
         // 徘徊地点
         [SerializeField]
@@ -52,6 +54,7 @@ namespace Gameplay {
         }
 
         void Update() {
+            checkCatchCharactor();
             if(isAngry) {
                 if(!seePlayer()) {
                     isAngry = false;
@@ -96,6 +99,13 @@ namespace Gameplay {
 
         public void destory() {
             Destroy(this.gameObject);
+            print("被销毁了");
+        }
+
+        void checkCatchCharactor() {
+            if((this.transform.position - GameManager.Player.transform.position).magnitude < catchDistance) {
+                GameManager.Player.GetComponent<Player>().Dead();
+            }
         }
     }
 }
