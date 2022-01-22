@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
@@ -26,6 +27,8 @@ namespace Gameplay
 
         //data
         public static GameManager Instance { get; private set; }
+        private static List<Stage> _stages;
+        public static List<Stage> Stages => _stages ?? (_stages = new List<Stage>(Resources.LoadAll<Stage>("Stages")));
         public static Stage selectedStage;
         public Stage GeneratedStage { get; private set; }
         public static Player Player => Instance.player;
@@ -41,6 +44,23 @@ namespace Gameplay
                 Destroy(GeneratedStage);
             GeneratedStage = Instantiate(stage, worldTransform);
             player.transform.position = stage.startPosition.position;
+        }
+        public void NextStage()
+        {
+            int currentID = Stages.IndexOf(selectedStage);
+            if(currentID == -1)
+            {
+                Debug.LogWarning("NextStage: Invalid seleted stage!");
+                return;
+            }
+            if(currentID == Stages.Count - 1)
+            {
+                //TODO: game clear
+                Debug.LogWarning("NextStage: All stage cleared!");
+                return;
+            }
+            selectedStage = Stages[currentID + 1];
+            SceneManager.LoadScene("Game");
         }
         public void EmitLightLine(Vector2 origin, Vector2 direction, LightBlocker ignoreBlocker = null, float distance = 100)
         {

@@ -10,24 +10,21 @@ namespace Gameplay
     [RequireComponent(typeof(Button))]
     public class StageEnterButton : MonoBehaviour
     {
-        [SerializeField]
-        Stage stage;
+        public Stage stage;
 
         public Button Button { get; private set; }
         private void Awake()
         {
             Button = GetComponent<Button>();
+        }
+        private void Start()
+        {
             Button.onClick.AddListener(() =>
             {
                 GameManager.selectedStage = stage;
                 SceneManager.LoadScene("Game");
             });
-        }
-
-        private void OnValidate()
-        {
-            if(stage != null)
-                gameObject.name = stage.name;
+            GetComponentInChildren<Text>().text = stage.name;
         }
     }
 }

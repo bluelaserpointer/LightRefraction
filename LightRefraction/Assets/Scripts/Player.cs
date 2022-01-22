@@ -58,6 +58,10 @@ namespace Gameplay
                 transform.Translate(input * moveSpeed * Time.deltaTime);
             }
         }
+        public void Dead()
+        {
+            transform.position = GameManager.Instance.GeneratedStage.startPosition.position;
+        }
     }
 
 }

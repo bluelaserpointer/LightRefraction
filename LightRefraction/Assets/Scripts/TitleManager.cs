@@ -7,15 +7,17 @@ namespace Gameplay
     [DisallowMultipleComponent]
     public class TitleManager : MonoBehaviour
     {
-        // Start is called before the first frame update
+        [SerializeField]
+        Transform stageButtonGroup;
+        [SerializeField]
+        StageEnterButton stageButtonPrefab;
+
         void Start()
         {
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            foreach(var stage in GameManager.Stages)
+            {
+                Instantiate(stageButtonPrefab, stageButtonGroup).stage = stage;
+            }
         }
     }
 
