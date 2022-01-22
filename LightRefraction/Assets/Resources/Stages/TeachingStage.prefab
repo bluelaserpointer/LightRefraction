@@ -98,6 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2927843922681960349}
   - component: {fileID: 5953856524672471607}
+  - component: {fileID: 9037665652711215822}
   m_Layer: 0
   m_Name: wall (1)
   m_TagString: Untagged
@@ -145,6 +146,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5199432, y: 25.52097}
   m_EdgeRadius: 0
+--- !u!114 &9037665652711215822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494186254046488661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f26dad21b35c34ca5a58de56832fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBlock: 1
+  doReflection: 0
+  OnLighten:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &717291804296913415
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 639568812401445240}
   - component: {fileID: 4550800004496760244}
+  - component: {fileID: 4228740118999818235}
   m_Layer: 0
   m_Name: wall
   m_TagString: Untagged
@@ -202,6 +221,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 25.489525, y: 1.4862537}
   m_EdgeRadius: 0
+--- !u!114 &4228740118999818235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717291804296913415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f26dad21b35c34ca5a58de56832fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBlock: 1
+  doReflection: 0
+  OnLighten:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &742637922586199000
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2311036636362859257}
   - component: {fileID: 2124468042184680477}
+  - component: {fileID: 6790637246221731997}
   m_Layer: 0
   m_Name: wall (4)
   m_TagString: Untagged
@@ -467,6 +504,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4488153, y: 19.066757}
   m_EdgeRadius: 0
+--- !u!114 &6790637246221731997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686861418689274055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f26dad21b35c34ca5a58de56832fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBlock: 1
+  doReflection: 0
+  OnLighten:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6312671577184923253
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4413177119763226923}
   - component: {fileID: 6170167849451927152}
+  - component: {fileID: 2617038285479093859}
   m_Layer: 0
   m_Name: wall (6)
   m_TagString: Untagged
@@ -524,6 +579,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.4236317, y: 11.793115}
   m_EdgeRadius: 0
+--- !u!114 &2617038285479093859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312671577184923253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f26dad21b35c34ca5a58de56832fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBlock: 1
+  doReflection: 0
+  OnLighten:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6742978842003639619
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2175549223423339879}
   - component: {fileID: 4515697242482870324}
+  - component: {fileID: 72487602089686250}
   m_Layer: 0
   m_Name: wall (3)
   m_TagString: Untagged
@@ -581,6 +654,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3776865, y: 25.52097}
   m_EdgeRadius: 0
+--- !u!114 &72487602089686250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6742978842003639619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f26dad21b35c34ca5a58de56832fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBlock: 1
+  doReflection: 0
+  OnLighten:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8366355224441452376
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4376698211377284441}
   - component: {fileID: 906257179761160423}
+  - component: {fileID: 8796912584887284657}
   m_Layer: 0
   m_Name: wall (5)
   m_TagString: Untagged
@@ -638,6 +729,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.64961, y: 11.793115}
   m_EdgeRadius: 0
+--- !u!114 &8796912584887284657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366355224441452376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f26dad21b35c34ca5a58de56832fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBlock: 1
+  doReflection: 0
+  OnLighten:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8666546462338434952
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6585017095422948620}
   - component: {fileID: 1912908272150688430}
+  - component: {fileID: 1989785063588767525}
   m_Layer: 0
   m_Name: wall (2)
   m_TagString: Untagged
@@ -695,6 +804,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 25.489525, y: 1.4862537}
   m_EdgeRadius: 0
+--- !u!114 &1989785063588767525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666546462338434952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f26dad21b35c34ca5a58de56832fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBlock: 1
+  doReflection: 0
+  OnLighten:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8852955195718208457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,14 +1274,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
---- !u!1 &3565967378449407465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309196131161368704, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
-  m_PrefabInstance: {fileID: 2546766477112636777}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3452997831468473707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 917728982616811522, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
+  m_PrefabInstance: {fileID: 2546766477112636777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3565967378449407465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1309196131161368704, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
   m_PrefabInstance: {fileID: 2546766477112636777}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &867200619409090352
@@ -1237,14 +1363,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
---- !u!1 &4176008926443348944 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309196131161368704, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
-  m_PrefabInstance: {fileID: 3161275218378640208}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2838242664372036434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 917728982616811522, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
+  m_PrefabInstance: {fileID: 3161275218378640208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4176008926443348944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1309196131161368704, guid: 7d54d12c4bc24ae469bd5bdb7cf763ca, type: 3}
   m_PrefabInstance: {fileID: 3161275218378640208}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7304992872064546659
