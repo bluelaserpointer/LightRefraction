@@ -24,19 +24,17 @@ namespace Gameplay {
         bool toEnd = true;
         // 是否处于追击状态
         bool isAngry = false;
+        // 表示怪物的右侧
+        Vector3 fakeRight;
 
         void Start() {
             this.transform.position = startPatrolPosition;
+            fakeRight = this.transform.right;
         }
 
         void move(Vector3 dst) {
-            this.transform.right = (dst - this.transform.position).normalized;
-            if(transform.right.z != 0) 
-                print("?");
-            print("=========================");
-            print(transform.right);
-            print(transform.position);
-            this.transform.position += this.transform.right * getSpeed() * Time.deltaTime;
+            fakeRight = (dst - this.transform.position).normalized;
+            this.transform.position += fakeRight * getSpeed() * Time.deltaTime;
         }
 
         float getSpeed() {
@@ -48,7 +46,7 @@ namespace Gameplay {
         bool checkShouldChange(Vector3 dst) {
             if((this.transform.position - dst).magnitude < 1) 
                 return true;
-            if(Vector3.Dot(dst - this.transform.position, this.transform.right) < 0) 
+            if(Vector3.Dot(dst - this.transform.position, fakeRight) < 0) 
                 return true;
             return false;
         }
@@ -89,11 +87,11 @@ namespace Gameplay {
 
         /* 是否能看到玩家 */
         bool seePlayer() {
-            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.right, (this.transform.position - GameManager.Player.transform.position).magnitude);
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, fakeRight, (this.transform.position - GameManager.Player.transform.position).magnitude);
             if(hit.collider != null && hit.collider.isTrigger) {
                 return false;
             }
-            return (this.transform.position - GameManager.Player.transform.position).magnitude < viewDistance && Vector3.Dot((GameManager.Player.transform.position - this.transform.position), this.transform.right) > 0;
+            return (this.transform.position - GameManager.Player.transform.position).magnitude < viewDistance && Vector3.Dot((GameManager.Player.transform.position - this.transform.position), fakeRight) > 0;
         }
 
         public void destory() {
