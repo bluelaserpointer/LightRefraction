@@ -1,32 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[DisallowMultipleComponent]
+[RequireComponent(typeof(CanvasGroup))]
 public class SBA_FadeIO : MonoBehaviour
 {
+    public CanvasGroup CanvasGroup { get; private set; }
+    public float alphaChangePerSec = 1;
     [SerializeField]
-    CanvasGroup canvasGroup;
-    [SerializeField]
-    float alphaChangePerSec = 1;
-    [Range(0, 1)]
-    public float targetAlpha;
+    float targetAlpha;
 
+    bool _reached;
+    UnityAction reachAction;
+    private void Awake()
+    {
+        CanvasGroup = GetComponent<CanvasGroup>();
+    }
     private void FixedUpdate()
     {
-        if(canvasGroup.alpha != targetAlpha)
+        if(CanvasGroup.alpha != targetAlpha)
         {
-            canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, alphaChangePerSec * Time.fixedDeltaTime);
+            CanvasGroup.alpha = Mathf.MoveTowards(CanvasGroup.alpha, targetAlpha, alphaChangePerSec * Time.fixedDeltaTime);
+        }
+        else if(!_reached)
+        {
+            _reached = true;
+            if(reachAction != null)
+            {
+                reachAction.Invoke();
+                reachAction = null;
+            }
         }
     }
-    public void FadeIn()
+    public void FadeIn(UnityAction reachAction = null)
     {
+        _reached = false;
+        this.reachAction = reachAction;
         gameObject.SetActive(true);
-        canvasGroup.interactable = true;
+        CanvasGroup.interactable = true;
         targetAlpha = 1;
     }
-    public void FadeOut()
+    public void FadeOut(UnityAction reachAction = null)
     {
-        canvasGroup.interactable = false;
+        _reached = false;
+        this.reachAction = reachAction;
+        CanvasGroup.interactable = false;
         targetAlpha = 0;
     }
 }

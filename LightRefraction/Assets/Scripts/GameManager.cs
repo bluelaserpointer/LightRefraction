@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Gameplay
 {
@@ -20,6 +21,8 @@ namespace Gameplay
         Transform lightLinesGroupTransform;
         [SerializeField]
         Player player;
+        [SerializeField]
+        SBA_FadeIO stageChangingFader;
 
         [Header("Assets Reference")]
         [SerializeField]
@@ -37,6 +40,11 @@ namespace Gameplay
             Instance = this;
             //debug
             LoadStage(selectedStage ?? debugStage);
+        }
+        private void Start()
+        {
+            stageChangingFader.CanvasGroup.alpha = 1;
+            stageChangingFader.FadeOut();
         }
         public void LoadStage(Stage stage)
         {
@@ -60,7 +68,10 @@ namespace Gameplay
                 return;
             }
             selectedStage = Stages[currentID + 1];
-            SceneManager.LoadScene("Game");
+            stageChangingFader.FadeIn(() =>
+            {
+                SceneManager.LoadScene("Game");
+            });
         }
         public void EmitLightLine(Vector2 origin, Vector2 direction, LightBlocker ignoreBlocker = null, float distance = 100)
         {
