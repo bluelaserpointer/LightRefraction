@@ -12,6 +12,7 @@ namespace Gameplay
         {
             if(collision.attachedRigidbody == GameManager.Player.Rigidbody)
             {
+                print("next");
                 GameManager.Instance.NextStage();
             }
         }
