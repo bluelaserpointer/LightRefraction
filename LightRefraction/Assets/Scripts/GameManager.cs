@@ -61,7 +61,7 @@ namespace Gameplay
                             EmitLightLine(end, Vector2.Reflect(direction, hitInfo.normal), lightBlocker, distance - hitInfo.distance);
                         }
                         foundEnd = true;
-                        lightBlocker.OnLighten.Invoke(end, direction);
+                        lightBlocker.Lighten(end, direction);
                         break;
                     }
                 }
