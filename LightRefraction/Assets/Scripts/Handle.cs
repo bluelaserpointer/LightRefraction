@@ -22,19 +22,18 @@ namespace Gameplay
         {
             _interactable = GetComponent<Interactable>();
             _interactable.OnInteract.AddListener(OnInteract);
+            _interactable.isMountable = true;
         }
         private void OnInteract()
         {
             if(BeingInteracted)
             {
                 BeingInteracted = false;
-                GameManager.Player.InteractionPreventMove = false;
                 gears.ForEach(gear => gear.SetHandleAmount(0));
             }
             else
             {
                 BeingInteracted = true;
-                GameManager.Player.InteractionPreventMove = true;
             }
         }
         void Update()

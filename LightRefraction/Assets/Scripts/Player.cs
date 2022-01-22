@@ -31,8 +31,7 @@ namespace Gameplay
 
         //data
         public Vector3 input;
-        public bool InteractionPreventMove { get; set; }
-        public Interactable interactingObj;
+        public Interactable mountingInteractableObj { get; set; }
         void Update()
         {
             //movement / handle input
@@ -41,25 +40,37 @@ namespace Gameplay
             //interact
             if(Input.GetKeyDown(KeyCode.Z))
             {
-                if(interactingObj != null && interactionArea.InArea(interactingObj))
+                if(mountingInteractableObj != null)
                 {
-                    interactingObj.Interact();
+                    mountingInteractableObj.Interact(); //dismount
+                    mountingInteractableObj = null;
                 }
-                else if(interactionArea.Interactable != null)
+                else
                 {
-                    (interactingObj = interactionArea.Interactable).Interact();
+                    Interactable newInteractable = interactionArea.Interactable;
+                    if (newInteractable != null)
+                    {
+                        newInteractable.Interact();
+                        if (newInteractable.isMountable)
+                            mountingInteractableObj = newInteractable;
+                    }
                 }
             }
         }
         private void FixedUpdate()
         {
-            if (!InteractionPreventMove)
+            if (mountingInteractableObj == null)
             {
                 transform.Translate(input * moveSpeed * Time.deltaTime);
             }
         }
         public void Dead()
         {
+            if(mountingInteractableObj != null)
+            {
+                mountingInteractableObj.Interact(); //dismount
+                mountingInteractableObj = null;
+            }
             transform.position = GameManager.Instance.GeneratedStage.startPosition.position;
         }
     }

@@ -10,6 +10,8 @@ namespace Gameplay
     public class Interactable : MonoBehaviour
     {
         public UnityEvent OnInteract;
+        [HideInInspector]
+        public bool isMountable;
         public void Interact()
         {
             OnInteract.Invoke();
