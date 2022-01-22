@@ -28,13 +28,13 @@ namespace Gameplay
             if(BeingInteracted)
             {
                 BeingInteracted = false;
-                GameManager.Player.preventMove = false;
+                GameManager.Player.InteractionPreventMove = false;
                 gears.ForEach(gear => gear.SetHandleAmount(0));
             }
             else
             {
                 BeingInteracted = true;
-                GameManager.Player.preventMove = true;
+                GameManager.Player.InteractionPreventMove = true;
             }
         }
         void Update()

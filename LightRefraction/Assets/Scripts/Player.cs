@@ -31,8 +31,7 @@ namespace Gameplay
 
         //data
         public Vector3 input;
-        [HideInInspector]
-        public bool preventMove;
+        public bool InteractionPreventMove { get; set; }
         public Interactable interactingObj;
         void Update()
         {
@@ -54,7 +53,7 @@ namespace Gameplay
         }
         private void FixedUpdate()
         {
-            if (!preventMove)
+            if (!InteractionPreventMove)
             {
                 transform.Translate(input * moveSpeed * Time.deltaTime);
             }

@@ -26,13 +26,14 @@ namespace Gameplay
 
         //data
         public static GameManager Instance { get; private set; }
+        public static Stage selectedStage;
         public Stage GeneratedStage { get; private set; }
         public static Player Player => Instance.player;
         private void Awake()
         {
             Instance = this;
             //debug
-            LoadStage(debugStage);
+            LoadStage(selectedStage ?? debugStage);
         }
         public void LoadStage(Stage stage)
         {
