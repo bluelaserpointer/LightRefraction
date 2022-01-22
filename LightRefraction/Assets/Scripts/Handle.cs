@@ -46,7 +46,7 @@ namespace Gameplay
         }
         private void FixedUpdate()
         {
-            if(_input != 0)
+            if(BeingInteracted && _input != 0)
                 transform.eulerAngles += _input * Vector3.forward * rotateSpeed * Time.fixedDeltaTime;
         }
         private void OnDrawGizmos()

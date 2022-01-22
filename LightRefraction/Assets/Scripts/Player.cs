@@ -11,6 +11,8 @@ namespace Gameplay
         float moveSpeed = 5F;
         [SerializeField]
         PlayerInteractionArea interactionArea;
+        [SerializeField]
+        Transform gemHolder;
 
         Gem _holdingGem;
         public Gem HoldingGem
@@ -18,7 +20,11 @@ namespace Gameplay
             get => _holdingGem;
             set
             {
-                _holdingGem = value;
+                if((_holdingGem = value) != null)
+                {
+                    _holdingGem.transform.parent = gemHolder;
+                    _holdingGem.transform.position = gemHolder.position;
+                }
                 GameManager.Instance.UpdateGemUI();
             }
         }
@@ -36,16 +42,13 @@ namespace Gameplay
             //interact
             if(Input.GetKeyDown(KeyCode.Z))
             {
-                print("Z");
                 if(interactingObj != null && interactionArea.InArea(interactingObj))
                 {
-                    print("interact old");
                     interactingObj.Interact();
                 }
                 else if(interactionArea.Interactable != null)
                 {
                     (interactingObj = interactionArea.Interactable).Interact();
-                    print("interact new: " + interactingObj);
                 }
             }
         }

@@ -41,7 +41,7 @@ namespace Gameplay
             GeneratedStage = Instantiate(stage, worldTransform);
             player.transform.position = stage.startPosition.position;
         }
-        public void EmitLightLine(Vector2 origin, Vector2 direction, float distance = 100, Collider2D ignoreCollider = null)
+        public void EmitLightLine(Vector2 origin, Vector2 direction, LightBlocker ignoreBlocker = null, float distance = 100)
         {
             if (distance <= 0)
                 return;
@@ -49,20 +49,18 @@ namespace Gameplay
             bool foundEnd = false;
             foreach (RaycastHit2D hitInfo in Physics2D.RaycastAll(origin, direction, distance))
             {
-                if (hitInfo.collider.Equals(ignoreCollider))
-                    continue;
                 LightBlocker lightBlocker = hitInfo.collider.gameObject.GetComponent<LightBlocker>();
-                if (lightBlocker != null)
+                if (lightBlocker != null && !lightBlocker.Equals(ignoreBlocker))
                 {
                     if (lightBlocker.doBlock)
                     {
                         end = hitInfo.point;
                         if (lightBlocker.doReflection)
                         {
-                            EmitLightLine(end, Vector2.Reflect(direction, hitInfo.normal), distance - hitInfo.distance, hitInfo.collider);
+                            EmitLightLine(end, Vector2.Reflect(direction, hitInfo.normal), lightBlocker, distance - hitInfo.distance);
                         }
                         foundEnd = true;
-                        lightBlocker.OnLighten.Invoke();
+                        lightBlocker.OnLighten.Invoke(end, direction);
                         break;
                     }
                 }

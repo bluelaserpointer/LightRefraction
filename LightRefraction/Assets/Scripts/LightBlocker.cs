@@ -11,6 +11,6 @@ namespace Gameplay
         public bool doBlock = true;
         public bool doReflection = false;
 
-        public UnityEvent OnLighten;
+        public UnityEvent<Vector2, Vector2> OnLighten;
     }
 }
