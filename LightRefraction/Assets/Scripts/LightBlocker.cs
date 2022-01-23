@@ -15,7 +15,7 @@ namespace Gameplay
 
         IzumiLib.Timestamp lightenTimestamp = new IzumiLib.Timestamp();
         public float PassedTimeFromLastLighten => lightenTimestamp.PassedTime;
-        public bool IsLighten => PassedTimeFromLastLighten <= 0.01;
+        public bool IsLighten => PassedTimeFromLastLighten <= 0.1;
         public void Lighten(Vector2 position, Vector2 direction, float remainDistance)
         {
             OnLighten.Invoke(position, direction, remainDistance);

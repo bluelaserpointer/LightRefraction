@@ -20,7 +20,7 @@ namespace Gameplay
             foreach (float angle in DegreeAngles)
             {
                 Instantiate(refractDirectionIndicator, transform).transform.eulerAngles
-                        = Vector3.forward * (angle - 90);
+                        = Vector3.forward * (-angle + 90);
             }
         }
         private void OnDrawGizmos()
@@ -28,7 +28,7 @@ namespace Gameplay
             Gizmos.color = Color.yellow;
             foreach (float angle in DegreeAngles)
             {
-                float radian = (angle - 90) * Mathf.Deg2Rad;
+                float radian = (-angle + 90) * Mathf.Deg2Rad;
                 float length = 1;
                 Gizmos.DrawLine(transform.position, transform.position + new Vector3(length * Mathf.Cos(radian), length * Mathf.Sin(radian), 0));
             }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 470192142065652339}
   - component: {fileID: 470192142065652338}
   m_Layer: 0
-  m_Name: NewStage
+  m_Name: DebugStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,6 +433,14 @@ PrefabInstance:
     - target: {fileID: 2424558090317266117, guid: f01aab3fa1fc29a4d802b9ea9978066f, type: 3}
       propertyPath: m_Name
       value: Gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2866402686086248971, guid: f01aab3fa1fc29a4d802b9ea9978066f, type: 3}
+      propertyPath: degreeAngles.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2866402686086248971, guid: f01aab3fa1fc29a4d802b9ea9978066f, type: 3}
+      propertyPath: degreeAngles.Array.data[1]
+      value: 135
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f01aab3fa1fc29a4d802b9ea9978066f, type: 3}
