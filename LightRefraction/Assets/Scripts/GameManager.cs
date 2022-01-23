@@ -39,7 +39,7 @@ namespace Gameplay
         {
             Instance = this;
             //debug
-            LoadStage(selectedStage ?? debugStage);
+            LoadStage(selectedStage ?? (selectedStage = debugStage));
         }
         private void Start()
         {

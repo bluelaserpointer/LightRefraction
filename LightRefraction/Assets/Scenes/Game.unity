@@ -798,7 +798,6 @@ MonoBehaviour:
   interactionArea: {fileID: 219992741}
   gemHolder: {fileID: 10836579}
   input: {x: 0, y: 0, z: 0}
-  interactingObj: {fileID: 0}
 --- !u!50 &659855319
 Rigidbody2D:
   serializedVersion: 4
@@ -1396,7 +1395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3e22d5df56ae14585dbc9d88fc695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugStage: {fileID: 470192142065652338, guid: d7492b3fe06a66d459e1947ed41bb412, type: 3}
+  debugStage: {fileID: 470192142065652338, guid: c3f3e18865dbf8248afb99722bf24d07, type: 3}
   worldTransform: {fileID: 364188742}
   lightLinesGroupTransform: {fileID: 963599436}
   player: {fileID: 659855318}

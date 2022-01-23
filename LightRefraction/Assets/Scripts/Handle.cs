@@ -41,7 +41,7 @@ namespace Gameplay
             if (!BeingInteracted)
                 return;
             _input = GameManager.Player.input.x;
-            gears.ForEach(gear => gear.SetHandleAmount(_input));
+            gears.ForEach(gear => gear.SetHandleAmount(-_input));
         }
         private void FixedUpdate()
         {
